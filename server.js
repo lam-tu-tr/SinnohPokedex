@@ -9,37 +9,58 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))                                   //auto import all files from public folder
 app.use(express.json())
 
-let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=107'
+let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=2'
 
 let db,
-    dbConnectionStr = process.env.DB_STRING                         //application interface to get user environment
+    dbConnectionStr = process.env.DB_STRING                         //application interface to get user environment usng env
 
-console.log(dbConnectionStr)
 
-async function getPokeAPI() {
+const getPokeAPI = async () => {
     try{
         const res = await fetch(api_url)
         const data = await res.json()
-        //data.result gives array of name and url
-        // const pokeList = Object.entries(data).map(([name, url]) => ({name, url}))        -> convert object to array
-        console.log(data.results)
 
-        // console.log(typeof(pokemonList))
-        //now map this array and tag onto each object the full pokemon data by using another async function inside
-        // let pokeData = pokemonList.map(pokemon => pokemon.url)
-        // let pokemonData = await Promise.all(pokemonList.map(pokemon => pokemon.url))
-        // const pokemon = pokemonList.map(async pokemon => {
-        //     const 
+        //data.result gives array of name and url of each pokemon
+        
+        //create an array of promises using each pokemon's own api url
+        const url_Promises = data.results.map(async (pokemon) => await fetch(pokemon.url))
 
-        //     // {name: pokemon.name, url: pokemon.url}
-        // })
-        // return pokemon
+        //call all of those promises at the same time
+        const pokemon_Full_Data = await Promise.all(url_Promises).then(async values => {
+            //this promise turns all of the array promises into readable json
+            return await Promise.all(values.map(r => r.json()))
+        })
+
+        //Extract desired attributes of each pokemon into an array of objects
+        //  Where each object is a pokemon and their attributes
+        const extracted_poke_Data = pokemon_Full_Data.map(pokemon => ({
+            name: pokemon.name,
+            ability: pokemon.abilities,
+            index: pokemon.game_indices[0].game_index,
+            img_hd: pokemon.sprites.other.home.front_default,
+            sprite: pokemon.sprites.front_default,
+            types: pokemon.types,
+            weight: pokemon.weight,
+            height: pokemon.height
+        }))
+
+        return extracted_poke_Data
+
     }catch(err) {
-        console.log(err)
-        //throw error so that .then from getPokeAPI.then can handle error
+
+        console.log(err)                                                           //throw error so that .then from getPokeAPI.then can handle error
     }
 }
-getPokeAPI()
+
+//Note, to run code AFTER async func call, use .then
+const Pokemon_data = getPokeAPI()
+//.then(pokeData => console.log(pokeData))
+
+//-----------------------------------------------------
+//why doesnt this execute? Async has awaits but async |
+// console.log(Pokemon_data)                          |
+//-----------------------------------------------------
+
 MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true}, (err, client) => {
     if (err) return console.error(err)
     console.log('connected to database')
@@ -47,6 +68,8 @@ MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true}, (err, client) =
 
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html')
+    // console.log(Pokemon_data)
+    // console.log(Pokemon_data)
 })
 
 app.listen(process.env.PORT || PORT, () => {
