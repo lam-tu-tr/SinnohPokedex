@@ -1,14 +1,21 @@
 const { response } = require('express')
 const express = require('express')
 const app = express()
+
+//EJS
+const ejs = require('ejs')
+app.set('view engine', 'ejs')
+const path = require('path')
+app.set('views', path.join(__dirname, '/views'))
+
 const MongoClient = require('mongodb').MongoClient
 const PORT = 8000
 
-require('dotenv').config()
-app.set('view engine', 'ejs')                                       
+require('dotenv').config()                                       
 app.use(express.static('public'))                                   //auto import all files from public folder
 app.use(express.json())
 
+const tempText = "hi"
 let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=2'
 
 let db,
@@ -52,29 +59,30 @@ const getPokeAPI = async () => {
     }
 }
 
-//Note, to run code AFTER async func call, use .then
-const Pokemon_data = getPokeAPI()
-//.then(pokeData => console.log(pokeData))
 
-//-----------------------------------------------------
-//why doesnt this execute? Async has awaits but async |
-// console.log(Pokemon_data)                          |
-//-----------------------------------------------------
 
 MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true}, (err, client) => {
     if (err) return console.error(err)
     console.log('connected to database')
 })
 
-app.get('/api', function (req,res) {
-    res.json({pokemon: "snorlax"})
-})
+// app.get('/api', function (req,res) {
+    
+//     res.json(Pokemon_data)
+// })
 
-app.get('/', function (req, res) {
+app.get('/api', async function (req, res) {
+    //Note, to run code AFTER async func call, use .then
+    const Pokemon_data = await getPokeAPI()
+    //.then(pokeData => console.log(pokeData))
 
-    res.sendFile(__dirname + '/index.html')
-    // console.log(Pokemon_data)
-    // console.log(Pokemon_data)
+    //-----------------------------------------------------
+    //why doesnt this execute? Async has awaits but async |
+    // console.log(Pokemon_data)                          |
+    //-----------------------------------------------------
+    // res.render('data.ejs', {Data: JSON.stringify(Pokemon_data)})
+    res.json(Pokemon_data)
+    
 })
 
 app.listen(process.env.PORT || PORT, () => {
