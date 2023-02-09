@@ -16,7 +16,7 @@ app.use(express.static('public'))                                   //auto impor
 app.use(express.json())
 
 const tempText = "hi"
-let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=2'
+let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=107'
 
 let db,
     dbConnectionStr = process.env.DB_STRING                         //application interface to get user environment usng env

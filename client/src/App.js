@@ -4,26 +4,32 @@ import TopScreen from './TopScreen.js'
 import BotScreen from './BotScreen.js'
 import Nav from './Nav.js'
 
-import Pokedex from './assets/Pokedex_1200x900.png'
-import './App.css';
-import Top_scr from './top_scr.js'
-import Bot_scr from './bot_scr.js'
 
 import Pokedex from './assets/Pokedex_1200x900.png'
 
 function App() {
   const [pokeData, setPokeData] = useState([{}])        //empty array of objects to store from api
-
+  let temp = 0
   useEffect(() => {
-    fetch("/api").then(res => res.json())
-      .then(
-        data => {
-          console.log('data received from backend')
-          console.log(data)
-          setPokeData(data)
-        }
-      )
+    // try{
+      async function fetchData () {
+        const res = await fetch("/api")
+        const data = await res.json()
+        // .then(res => res.json())
+        // .then(
+        //   data => {
+        //     console.log('data received from backend')
+        //     console.log(data)
+        //     setPokeData(data)
+        // })
+        setPokeData(data)
+        console.log(data)
+      }
+      fetchData()
 
+    // } catch (err) {
+    //   console.log(err)
+    // }
   }, [])
 
   return (
