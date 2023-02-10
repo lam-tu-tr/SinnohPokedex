@@ -16,7 +16,7 @@
   object-fit: initial ;
   position: relative;
 }
-
+/*---------------TOP SCREEN--------------*/
 #top_screen {
   z-index: 100;
 
@@ -33,6 +33,13 @@
   border-radius: 10px;
 }
 
+#top_nav {
+  background-color:dodgerblue;
+  display: flex;
+  justify-content:space-between;
+}
+
+/*---------------BOT SCREEN--------------*/
 #bot_screen {
   z-index: 100;
   box-sizing: border-box;
