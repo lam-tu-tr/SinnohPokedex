@@ -66,10 +66,6 @@ MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true}, (err, client) =
     console.log('connected to database')
 })
 
-// app.get('/api', function (req,res) {
-    
-//     res.json(Pokemon_data)
-// })
 
 app.get('/api', async function (req, res) {
     //Note, to run code AFTER async func call, use .then
