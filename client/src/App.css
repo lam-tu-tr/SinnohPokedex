@@ -19,9 +19,7 @@
 /*---------------TOP SCREEN--------------*/
 #top_screen {
   z-index: 100;
-
   box-sizing: border-box;
-
   width: 361px;
   height: 333px;
   left: 371px;
@@ -31,14 +29,103 @@
   border: 20px solid #000000;
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 7px 7px 4px 17px rgba(0, 0, 0, 0.25); */
   border-radius: 10px;
+
+  /* grid set up */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr 5fr minmax(0,3fr);
+  grid-auto-columns: 1fr;
+  grid-template-areas: 
+    "head head head head head head head head head head head head"
+    "sprite sprite sprite sprite sprite sprite info info info info info info"
+    "foot foot foot foot foot foot foot foot foot foot foot foot";
 }
 
-#top_nav {
+header {
   background-color:dodgerblue;
   display: flex;
   justify-content:space-between;
+
+  grid-area: head;
+  grid-row: 1;
+  grid-column: 1/13;
 }
 
+#sprite {
+  grid-area: sprite;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#sprite > img {
+  max-width: 140px;
+  max-height: 140px;
+  height: auto;
+  width: auto;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+}
+#sprite > section {
+  background-color: gold;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+#sprite > section > div {
+  width: 70px;
+  height: 25px;
+  background-color: #04c237;
+  text-align: center;
+  vertical-align: center;
+  margin: 2px;
+  padding: 2px;
+}
+#info-section {
+  background-color: lightpink;
+  grid-area: info;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-around;
+  padding: 0.3em;
+  
+}
+
+#info-section > nav{
+  background-color: darkorange;
+  text-align: center;
+
+}
+
+#info-section div:first-of-type article{
+  background-color:goldenrod;
+}
+
+#info-section > div{
+  display: flex;
+  background-color: greenyellow;
+  justify-content: space-between;
+}
+
+#info-section > p {
+  background-color: darkkhaki;
+  max-width: 180px;
+  height: 80px;
+  
+}
+
+footer {
+  grid-area: foot;
+  background-color: teal;
+  grid-row: 3;
+  grid-column: 1/13;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 /*---------------BOT SCREEN--------------*/
 #bot_screen {
   z-index: 100;
