@@ -11,13 +11,10 @@ function TopScreen({pokeData}) {
             </header>
 
             <div id = "sprite">
-                <img src={pokeData[1].img_hd} alt="Sprite"></img>
+                <img src={pokeData[30].img_hd} alt="Sprite"></img>
                 <section>
-                    {/* skills, use logic to display if exist */}
-                    <div>skill1</div>
-                    <div>skill2</div>
-                    <div>skill3</div>
-                    <div>skill4</div>
+                    {/* skills, display multiple abilities if exist */}
+                    {pokeData[9].ability.map(ability => <div>{ability.ability.name}</div>)}
                 </section>
             </div>
 
@@ -44,10 +41,10 @@ function TopScreen({pokeData}) {
 
             <footer>
                 <div>
-                    <article>Obtained</article>
-                    <article>Seen</article>
+                    <article>O Obtained</article>
+                    <article>O Seen</article>
                 </div>
-                <h1>{pokeData[1].index}</h1>
+                <article><b>no. {pokeData[1].index}</b></article>
             </footer>   
         </div>
     )

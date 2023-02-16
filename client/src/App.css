@@ -21,8 +21,8 @@
   z-index: 100;
   background-color: aqua;
   box-sizing: border-box;
-  width: 361px;
-  height: 333px;
+  max-width: 361px !important;
+  max-height: 333px !important;
   left: 371px;
   top: 49px;
   position: absolute;
@@ -34,7 +34,7 @@
   /* grid set up */
   display: grid;
   grid-template-columns: 5fr 5fr;
-  grid-template-rows: 1fr 5fr minmax(0,3fr);
+  grid-template-rows: 1fr 8fr minmax(0,2fr);
   grid-auto-columns: 1fr;
   grid-template-areas: 
     "head head"
@@ -46,10 +46,11 @@ header {
   background-color:dodgerblue;
   display: flex;
   justify-content:space-between;
-
   grid-area: head;
   grid-row: 1;
   grid-column: 1/3;
+  align-items: center;
+  
 }
 
 #sprite {
@@ -69,24 +70,30 @@ header {
   margin-right: auto;
 }
 #sprite > section {
-  background-color: gold;
+  /* background-color:paleturquoise; */
+  flex-grow: 1;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+  justify-content:flex-start;
+  align-content:flex-start;
+
+  padding: 8px 2px 8px 2px;
+  border-radius: 0 15px 0 0;
 }
 #sprite > section > div {
+  font-size: 90%;
   width: 70px;
-  height: 25px;
-  background-color: #04c237;
   text-align: center;
-  vertical-align: center;
+  vertical-align:middle;
   margin: 2px;
   padding: 2px;
+
+  /* style */
+  background-color: white;
+  border-radius: 10px;
 }
 #info-section {
-  background-color: lightpink;
   grid-area: info;
   display: flex;
   flex-direction: column;
@@ -109,13 +116,14 @@ header {
   display: flex;
   background-color: greenyellow;
   justify-content: space-between;
+  padding: 0.1em;
+  /* margin: 0.1em 0; */
 }
 
 #info-section > p {
   background-color: darkkhaki;
-  max-width: 180px;
   height: 80px;
-  
+  padding: 0.3em
 }
 
 footer {
@@ -126,6 +134,15 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white; 
+  padding: 0 0 0 2%;
+}
+footer > article {
+  font-size: 2.5em;
+  background-color:orangered;
+  padding: 2% 0 0 10%;
+  margin: 0 0 0 0;
+  border-radius: 30px 0 0 0;
 }
 /*---------------------------------BOT SCREEN--------------------------------*/
 #bot_screen {

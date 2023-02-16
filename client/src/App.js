@@ -1,20 +1,11 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './App.css';
 import TopScreen from './TopScreen.js'
 import BotScreen from './BotScreen.js'
 import Nav from './Nav.js'
 
 import Pokedex from './assets/Pokedex_1200x900.png'
-// const pokeData = [{ "name": "turtwig", 
-//                     "ability": 
-//                       [{ "ability": { "name": "overgrow", "url": "https://pokeapi.co/api/v2/ability/65/" }, "is_hidden": false, "slot": 1 }, 
-//                       { "ability": { "name": "shell-armor", "url": "https://pokeapi.co/api/v2/ability/75/" }, "is_hidden": true, "slot": 3 }],
-//                     "index": 387, 
-//                     "img_hd": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/387.png", 
-//                     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/387.png", 
-//                     "types": [{ "slot": 1, "type": { "name": "grass", "url": "https://pokeapi.co/api/v2/type/12/" } }], 
-//                     "weight": 102, 
-//                     "height": 4 }, 
+// const pokeData = [
 //                     { "name": "torchic", 
 //                     "ability": 
 //                       [{ "ability": { "name": "blaze", "url": "https://pokeapi.co/api/v2/ability/66/" }, "is_hidden": false, "slot": 1 }, 
@@ -27,15 +18,16 @@ import Pokedex from './assets/Pokedex_1200x900.png'
 //                     "height": 4 }]
 function App() {
   //empty array of objects to store from api
-  const [pokeData, setPokeData] = React.useState(null)
+  const [pokeData, setPokeData] = useState(null)
   console.log("App")
-  React.useEffect(() => {
+  useEffect(() => {
     //"API" call from file WITHOUT backend
     console.log("fetching data api from json file")
     async function fetchData() {
-      const res = await fetch("./api.json")
+      const res = await fetch("./api.json")//from public????
       const data = await res.json()
       setPokeData(data)
+      console.log(data[0].ability)
     }
     fetchData()
 
@@ -68,8 +60,8 @@ function App() {
       <Nav />
       <div id="Pokedex">
         <img src={Pokedex} alt="pokedex png"></img>
-        {pokeData && <TopScreen pokeData= {pokeData} />}
-        {pokeData && <BotScreen pokeData= {pokeData} />}
+        {pokeData ? <TopScreen pokeData= {pokeData} /> : null}
+        {pokeData ? <BotScreen pokeData= {pokeData} /> : null}
       </div>
     </div>
   )
