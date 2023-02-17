@@ -4,6 +4,8 @@ function TopScreen({pokeData}) {
     return (
         <div id="top_screen">
 
+            <div id="color2"></div>
+            
             <header id = "top_nav">
                 <div>caught</div>
                 <div>seen</div>
@@ -11,17 +13,16 @@ function TopScreen({pokeData}) {
             </header>
 
             <div id = "sprite">
-                <img src={pokeData[30].img_hd} alt="Sprite"></img>
-                <section>
-                    {/* skills, display multiple abilities if exist */}
-                    {pokeData[9].ability.map(ability => <div>{ability.ability.name}</div>)}
-                </section>
+                <img src={pokeData[32].img_hd} alt="Sprite"></img>
             </div>
 
+            <section id = "ability">
+                {/* skills, display multiple abilities if exist */}
+                {pokeData[9].ability.map(ability => <div>{ability.ability.name}</div>)}
+            </section>
+            
+
             <section id = "info-section">
-                <nav>
-                    <div>{pokeData[1].name}</div> 
-                </nav>
 
                 <div>TYPE
                     <article>{pokeData[1].name}</article>
@@ -39,13 +40,18 @@ function TopScreen({pokeData}) {
                 <p>asdfoak asdfasd asdfasd</p>
             </section>
 
-            <footer>
-                <div>
-                    <article>O Obtained</article>
-                    <article>O Seen</article>
-                </div>
-                <article><b>no. {pokeData[1].index}</b></article>
-            </footer>   
+            <div id = "stat">
+                <article><b>O Obtained</b></article>
+                <article><b>O Seen</b></article>
+            </div>
+
+            <div id="color1"></div>
+
+            <article id="index">
+                <div><b>No.</b> </div> 
+                <div><b>{pokeData[1].index}</b></div>
+            </article>
+            
         </div>
     )
 }
