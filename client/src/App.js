@@ -4,6 +4,10 @@ import TopScreen from './TopScreen.js'
 import BotScreen from './BotScreen.js'
 import Nav from './Nav.js'
 
+
+//add an array with pokemon type color scheme
+
+
 import Pokedex from './assets/Pokedex_1200x900.png'
 // const pokeData = [
 //                     { "name": "torchic", 
