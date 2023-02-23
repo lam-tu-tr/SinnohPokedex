@@ -173,55 +173,113 @@ header {
 }
 /*---------------------------------BOT SCREEN--------------------------------*/
 #bot_screen {
-  z-index: 100;
+  z-index: 10;
   box-sizing: border-box;
-  width: 361px;
-  height: 332px;
-  position: absolute;
+  width: 361px !important;
+  height: 332px !important;
   left: 371px;
   top: 506px;
+  position: absolute;
+
   display: grid;
-  grid-template-columns: repeat(24, 1fr);
+  grid-template-columns: repeat(25, 1fr);
   grid-template-rows: repeat(24, 1fr);
 
   background: #E1E0E1;
-  border: 20px solid #04c237;
+  border: 20px solid #000000;
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 7px 7px 4px 17px rgba(0, 0, 0, 0.25); */
   border-radius: 10px;
 }
 
-#gallery {
-  background-color:pink;
-  grid-row: 1/24;
-  grid-column: 1/25;
-  padding: 10px;
+#bg_color {
+  grid-row: 1/22;
+  grid-column: 1/26;
   color: white;
+  filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.5));
+  z-index: -1;
 }
-#gallery > div {
-  background-color:thistle;
-  margin: 0 0 5px 0;
+
+#bg_color > div {
+  height: 100%;
+  width: 100%;
+  background-color: pink;
+}
+
+#gallery {
+  grid-row: 1/22;
+  grid-column: 1/26;
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-template-rows: subgrid;
+}
+#gallery > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.card {
+  border-radius: 7px;
+  font-size: 1.2em;
+  padding:5px;
 }
 #gallery > div > img {
   height: 80px;
   width: 80px;
+  background-color:#5675E7;
   border-radius: 5px;
-  margin: 5px;
-  /* background-color: khaki; */
-  background-color: #BCCEF8;
+}
+
+#top_left_poke {
+  grid-row:2/11;
+  grid-column: 2/9;
+  background-color: #9ADCFF;
+}
+#top_poke {
+  grid-row: 2/11;
+  grid-column: 10/17;
+  background-color: #9ADCFF;
+}
+#top_right_poke {
+  grid-row: 2/11;
+  grid-column: 18/25;
+  background-color: #9ADCFF;
+}
+#bot_left_poke {
+  grid-row: 12/21;
+  grid-column: 2/9;
+  background-color: #9ADCFF;
+}
+#bot_poke {
+  grid-row: 12/21;
+  grid-column: 10/17;
+  background-color: #9ADCFF;
+}
+#bot_right_poke {
+  grid-row: 12/21;
+  grid-column: 18/25;
+  background-color: #9ADCFF;
 }
 #gallery > div > div {
   display: flex;
   flex-direction: row;
   justify-content: left;
-  padding: 4px;
-  font-size: 1.2em;
 }
 
-
+#gallery > div > div > article {
+  font-size: 1.8em;
+  color: white;
+  font-weight: bold;
+  
+}
 #scroll {
+  grid-row: 22/25;
+  grid-column: 1/26;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  margin: 1em;
+  align-items: center;
+  background-color: #04c237;
 }
 
 /* ------------------------------Media Queries-------------------------------*/
