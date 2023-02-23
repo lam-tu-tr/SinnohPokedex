@@ -7,6 +7,10 @@ function BotScreen({ pokeData }) {
     <div id="bot_screen">
       <Gallery  pokeData = {pokeData}/>
 
+      <div id="bg_color">
+        <div></div>
+      </div>
+
       <nav id="scroll">
         <article>Scroll bar</article>
         <button>L_Button</button>
