@@ -192,85 +192,75 @@ header {
 }
 
 #bg_color {
-  grid-row: 1/22;
-  grid-column: 1/26;
+  grid-row: 1/12;
+  grid-column: 1/6;
   color: white;
   filter: drop-shadow(-2px 4px 6px rgba(0, 0, 0, 0.5));
   z-index: -1;
+}
+#bg_color > div {
+  clip-path: polygon(0 0, 100% 0, 0 100%, 0 100%);
 }
 
 #bg_color > div {
   height: 100%;
   width: 100%;
-  background-color: pink;
+  background-color: #E17E7E;
 }
 
 #gallery {
   grid-row: 1/22;
   grid-column: 1/26;
-  display: grid;
+  /*display: grid;
   grid-template-columns: subgrid;
-  grid-template-rows: subgrid;
-}
-#gallery > div{
+  grid-template-rows: subgrid; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.card {
-  border-radius: 7px;
-  font-size: 1.2em;
-  padding:5px;
-}
-#gallery > div > img {
-  height: 80px;
-  width: 80px;
-  background-color:#5675E7;
-  border-radius: 5px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding:2px;
+  justify-content: space-evenly;
+  align-content: space-evenly;
 }
 
-#top_left_poke {
-  grid-row:2/11;
-  grid-column: 2/9;
+.card {
+  width:80px;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: space-between;
+  border-radius: 7px;
+  font-size: 1.2em;
+  /* padding: 5px 0 0 0; */
   background-color: #9ADCFF;
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.5));
 }
-#top_poke {
-  grid-row: 2/11;
-  grid-column: 10/17;
-  background-color: #9ADCFF;
+
+#gallery > div > img {
+  /* pokesprite */
+  height: 70px;
+  width: 70px;
+  background-color:#FFE2E2;
+  border-radius: 5px;
+  filter: drop-shadow(3px 3px 1px rgba(0, 0, 0, 0.5));
 }
-#top_right_poke {
-  grid-row: 2/11;
-  grid-column: 18/25;
-  background-color: #9ADCFF;
-}
-#bot_left_poke {
-  grid-row: 12/21;
-  grid-column: 2/9;
-  background-color: #9ADCFF;
-}
-#bot_poke {
-  grid-row: 12/21;
-  grid-column: 10/17;
-  background-color: #9ADCFF;
-}
-#bot_right_poke {
-  grid-row: 12/21;
-  grid-column: 18/25;
-  background-color: #9ADCFF;
-}
+
 #gallery > div > div {
+  height: 20px;
   display: flex;
   flex-direction: row;
   justify-content: left;
+  /* background-color: #04c237; */
 }
-
+/* pokeball */
+#gallery > div > div > img {
+  height:20px;
+  width: 20px;
+}
 #gallery > div > div > article {
   font-size: 1.8em;
   color: white;
   font-weight: bold;
-  
+  filter: drop-shadow(2px 0px 2px rgba(0, 0, 0, 0.5));
 }
 #scroll {
   grid-row: 22/25;
@@ -280,8 +270,22 @@ header {
   justify-content: space-between;
   align-items: center;
   background-color: #04c237;
+  margin: 10px 0 0 0;
 }
 
+#back_button {
+  grid-row:22/26;
+  grid-column: 14/20;
+  background-color: #8EA7E9;
+  z-index: 10;
+}
+
+#forward_button {
+  grid-row:22/26;
+  grid-column: 20/26;
+  background-color:#BCCEF8;
+  z-index: 10;
+}
 /* ------------------------------Media Queries-------------------------------*/
 @media screen and (max-width: 320px) { 
 

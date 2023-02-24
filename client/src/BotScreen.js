@@ -11,10 +11,11 @@ function BotScreen({ pokeData }) {
         <div></div>
       </div>
 
+      <button id = "back_button">L_Button</button>
+      <button id = "forward_button">R_button</button>
+
       <nav id="scroll">
         <article>Scroll bar</article>
-        <button>L_Button</button>
-        <button>R_button</button>
       </nav>
 
     </div>
