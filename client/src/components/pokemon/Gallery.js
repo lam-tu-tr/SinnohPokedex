@@ -1,7 +1,8 @@
 import React from 'react'
-import pokeball from './assets/pokeball_icon.png'
+import PokeCard from './PokeCard.js'
+import pokeball from '../../assets/pokeball_icon.png'
+
 function Gallery({ pokeData }) {
-    console.log(pokeData)
     return (
         <div id = "gallery">
 
