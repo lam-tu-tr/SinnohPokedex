@@ -1,10 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
 
-* {
-  color: white;
-}
 #root{
   font-family: 'Roboto', sans-serif;
+  color:white;
 }
 #Container {
   height: 100vh;
@@ -113,8 +111,8 @@ header {
   grid-row: 4/18;
   grid-column: 6/13;
   border-radius: 10px 0 0 10px;
-  color: black;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  color: black;
 }
 
 #info-section > div{
@@ -238,7 +236,6 @@ header {
 
 .card {
   width:80px;
-  /* height: 80px; */
   display: flex;
   flex-direction: column;
   align-items:flex-start;

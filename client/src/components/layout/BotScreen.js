@@ -1,10 +1,17 @@
 import React from 'react'
-import Gallery from '../pokemon/Gallery.js'
-
-function BotScreen({ pokeData }) {
+import PokeCard from '../pokemon/PokeCard.js'
+function BotScreen({ pokeData, galleryIndex }) {
+  
   return (
     <div id="bot_screen">
-      <Gallery pokeData={pokeData} />
+      {/* <Gallery pokeData={pokeData} /> */}
+
+      <div id="gallery">
+        {/* // galleryIndex is passed as an object array of array, aka 2D array */}
+        {galleryIndex[0].map(pokemon => 
+          (<PokeCard pokeData={pokeData[pokemon]} />)
+        )}
+      </div>
 
       <div id="bg_color">
         <div></div>
