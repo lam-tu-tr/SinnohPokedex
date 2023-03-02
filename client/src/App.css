@@ -242,7 +242,9 @@ header {
   justify-content: space-between;
   border-radius: 7px;
   font-size: 1.2em;
+  /* implement type color scheme */
   background-color: #9ADCFF;
+  /* background-color: rgb(193, 34, 57); */
   filter: drop-shadow(3px 3px 4px rgba(0, 0, 0, 0.5));
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
