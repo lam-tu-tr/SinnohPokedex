@@ -15,7 +15,6 @@ require('dotenv').config()
 app.use(express.static('public'))                                   //auto import all files from public folder
 app.use(express.json())
 
-const tempText = "hi"
 let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=107'
 
 let db,

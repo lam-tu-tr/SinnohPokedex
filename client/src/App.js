@@ -4,20 +4,8 @@ import TopScreen from './components/layout/TopScreen.js'
 import BotScreen from './components/layout/BotScreen.js'
 import Nav from './components/layout/Nav.js'
 
-//add an array with pokemon type color scheme
 
 import Pokedex from './assets/Pokedex_1200x900.png'
-// const pokeData = [
-//                     { "name": "torchic", 
-//                     "ability": 
-//                       [{ "ability": { "name": "blaze", "url": "https://pokeapi.co/api/v2/ability/66/" }, "is_hidden": false, "slot": 1 }, 
-//                       { "ability": { "name": "speed-boost", "url": "https://pokeapi.co/api/v2/ability/3/" }, "is_hidden": true, "slot": 3 }], 
-//                     "index": 255, 
-//                     "img_hd": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/255.png", 
-//                     "sprite": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/255.png", 
-//                     "types": [{ "slot": 1, "type": { "name": "fire", "url": "https://pokeapi.co/api/v2/type/10/" } }], 
-//                     "weight": 25, 
-//                     "height": 4 }]
 
 const typeColors = {
   "rock": [182, 158, 49],
@@ -43,7 +31,7 @@ const typeColors = {
 function App() {
   //empty array of objects to store from api
   const [pokeData, setPokeData] = useState(null)
-  const [selectedIndex, setSelectedIndex] = useState(32)
+  const [selectedIndex, setSelectedIndex] = useState(2)
   const [galleryIndex, setGalleryIndex] = useState([10,11,12,13,14,15])
 
   function changeSelectedIndex (index){
