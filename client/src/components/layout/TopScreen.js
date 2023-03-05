@@ -1,6 +1,11 @@
 import React from 'react'
 
 function TopScreen({ pokeData,selectedIndex, typeColors }) {
+    console.log(pokeData[selectedIndex].types[1].type.name)
+    // console.log('topscreen index: ' + selectedIndex)
+    function Capitalize (string) {
+        return string.charAt(0).toUpperCase() + string.slice(1)
+    }
     return (
         <div id="top_screen">
 
@@ -9,35 +14,48 @@ function TopScreen({ pokeData,selectedIndex, typeColors }) {
             </div>
             <div id="color3"></div>
 
-
             <header>
                 <div>
                     <b>
-                        {pokeData[32].name.charAt(0).toUpperCase()
-                            + pokeData[32].name.slice(1)}
+                        {Capitalize(pokeData[selectedIndex].name)}
                     </b>
                 </div>
             </header>
 
             <div id="sprite">
-                <img src={pokeData[32].img_hd} alt="Sprite"></img>
+                <img src={pokeData[selectedIndex].img_hd} alt="Sprite"></img>
             </div>
 
             <section id="info-section">
 
                 <div>TYPE
-                    <article>Fire</article>
-                    <article>Water</article>
+                    <article>
+                        {Capitalize(pokeData[selectedIndex].types[0].type.name)}
+                    </article>
+                    
+                    {/* if second type exists, only then display it */}
+                    {pokeData[selectedIndex].types.length > 0 ? 
+                        <article>
+                            {Capitalize(pokeData[selectedIndex].types[1].type.name)}    
+                        </article>
+                        : null
+                    }
                 </div>
+                
                 <div>
                     <article>HEIGHT</article>
                     {/* add logic for height calc */}
-                    <article>{pokeData[32].height * 10} cm</article>
+                    <article>{pokeData[selectedIndex].height * 10} cm</article>
                 </div>
                 <div>
                     <article>WEIGHT</article>
-                    <article>{pokeData[32].weight * 100 / 1000} kg</article>
+                    <article>{pokeData[selectedIndex].weight * 100 / 1000} kg</article>
                 </div>
+
+
+                {/* remember to fetch this data */}
+
+
                 <p>With its flotation sac inflated,
                     it can carry people on its back.
                     It deflates the sac before it dives.</p>
@@ -52,7 +70,7 @@ function TopScreen({ pokeData,selectedIndex, typeColors }) {
             </div>
             <article id="index">
                 <div><b>No.</b> </div>
-                <div><b>{pokeData[32].index}</b></div>
+                <div><b>{pokeData[selectedIndex].index}</b></div>
             </article>
         </div>
     )

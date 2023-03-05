@@ -58,6 +58,7 @@
   opacity: 1;
   background-image: radial-gradient(#ffffff 1.35px, #2b83b4 1.35px);
   background-size: 27px 27px;
+  /* filter:blur(1px); */
 }
 
 #color3 {
