@@ -4,10 +4,9 @@ import TopScreen from './components/layout/TopScreen.js'
 import BotScreen from './components/layout/BotScreen.js'
 import Nav from './components/layout/Nav.js'
 
-
 import Pokedex from './assets/Pokedex_1200x900.png'
 
-const typeColors = {
+const typeColorObj = {
   "rock": [182, 158, 49],
   "ghost": [112, 85, 155],
   "steel": [183, 185, 208],
@@ -29,15 +28,15 @@ const typeColors = {
 }
 
 function App() {
-  //empty array of objects to store from api
+  //array of objects to store data from api
   const [pokeData, setPokeData] = useState(null)
+  //topscreen poke index
   const [selectedIndex, setSelectedIndex] = useState(2)
+  //bot screen pokecard indexes
   const [galleryIndex, setGalleryIndex] = useState([10,11,12,13,14,15])
-
-  function changeSelectedIndex (index){
-    setSelectedIndex(index)
-  }
   
+
+
   useEffect(() => {
     //"API" call from file WITHOUT backend
     console.log("fetching data api from json file")
@@ -45,7 +44,6 @@ function App() {
       const res = await fetch("./api.json")//from public????
       const data = await res.json()
       setPokeData(data)
-      console.log(data[0].ability)
     }
     fetchData()
 
@@ -75,7 +73,8 @@ function App() {
 
   //This useEffect handles topscreen sprite change when gallery clicked
   useEffect(() => {
-    console.log('selected index' + selectedIndex)
+
+
   }, [selectedIndex])
   //This useEffect handles logic for updating gallery 
   useEffect(() => {
@@ -90,15 +89,15 @@ function App() {
           <TopScreen
             pokeData={pokeData}
             selectedIndex={selectedIndex}
-            typeColors={typeColors}
+            typeColorObj={typeColorObj}
           />
           : null}
         {pokeData ?
           <BotScreen
             pokeData={pokeData}
             galleryIndex={[galleryIndex]}
-            changeSelectedIndex={changeSelectedIndex}
-            typeColors={typeColors}
+            setSelectedIndex={setSelectedIndex}
+            // typeColors={typeColors}
           />
           : null}
       </div>

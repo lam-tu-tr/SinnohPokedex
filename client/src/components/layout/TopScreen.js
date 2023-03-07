@@ -1,11 +1,13 @@
 import React from 'react'
+import pokeball from '../../assets/pokeball_icon.png'
 
-function TopScreen({ pokeData,selectedIndex, typeColors }) {
-    console.log(pokeData[selectedIndex].types[1].type.name)
-    // console.log('topscreen index: ' + selectedIndex)
+function TopScreen({ pokeData,selectedIndex, typeColorObj }) {
+    const {name,img_hd,types,height,weight,index} = pokeData[selectedIndex]
+    console.log("type1 color" + typeColorObj[types[0].type.name])
     function Capitalize (string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
     }
+    
     return (
         <div id="top_screen">
 
@@ -17,60 +19,67 @@ function TopScreen({ pokeData,selectedIndex, typeColors }) {
             <header>
                 <div>
                     <b>
-                        {Capitalize(pokeData[selectedIndex].name)}
+                        {Capitalize(name)}
                     </b>
                 </div>
             </header>
 
             <div id="sprite">
-                <img src={pokeData[selectedIndex].img_hd} alt="Sprite"></img>
+                <img src={img_hd} alt="Sprite"></img>
             </div>
 
             <section id="info-section">
 
                 <div>TYPE
-                    <article>
-                        {Capitalize(pokeData[selectedIndex].types[0].type.name)}
-                    </article>
+                    <span
+                        style={{backgroundColor: `rgb(${typeColorObj[types[0].type.name]})`}}
+                        className="type"
+                    >
+                        {Capitalize(types[0].type.name)}
+                    </span>
                     
                     {/* if second type exists, only then display it */}
-                    {pokeData[selectedIndex].types.length > 0 ? 
-                        <article>
-                            {Capitalize(pokeData[selectedIndex].types[1].type.name)}    
-                        </article>
+                    {types.length > 1 ? 
+                        <span
+                            style={{backgroundColor: `rgb(${typeColorObj[types[1].type.name]})`}}
+                            className="type"
+                        >
+                            {Capitalize(types[1].type.name)}    
+                        </span>
                         : null
                     }
                 </div>
                 
                 <div>
-                    <article>HEIGHT</article>
+                    <span>HEIGHT</span>
                     {/* add logic for height calc */}
-                    <article>{pokeData[selectedIndex].height * 10} cm</article>
+                    <span>{height * 10} cm</span>
                 </div>
                 <div>
-                    <article>WEIGHT</article>
-                    <article>{pokeData[selectedIndex].weight * 100 / 1000} kg</article>
+                    <span>WEIGHT</span>
+                    <span>{weight * 100 / 1000} kg</span>
                 </div>
 
 
-                {/* remember to fetch this data */}
-
-
+                {/* remember to fetch this paragraph data */}
                 <p>With its flotation sac inflated,
                     it can carry people on its back.
                     It deflates the sac before it dives.</p>
             </section>
 
             <div id="stat">
-                <article><b>O Obtained</b></article>
-                <article><b>O Seen</b></article>
+                
+                <span>
+                    <img src={pokeball} alt="pokeball" className='pokeball'></img>
+                    <b> Obtained</b>
+                </span>
             </div>
             <div id="colorMint">
                 <div></div>
             </div>
             <article id="index">
                 <div><b>No.</b> </div>
-                <div><b>{pokeData[selectedIndex].index}</b></div>
+                <div><b>{index}</b></div>
             </article>
         </div>
     )
