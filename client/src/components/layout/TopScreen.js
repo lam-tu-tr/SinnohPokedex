@@ -2,8 +2,9 @@ import React from 'react'
 import pokeball from '../../assets/pokeball_icon.png'
 
 function TopScreen({ pokeData,selectedIndex, typeColorObj }) {
+
     const {name,img_hd,types,height,weight,index} = pokeData[selectedIndex]
-    console.log("type1 color" + typeColorObj[types[0].type.name])
+
     function Capitalize (string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
     }

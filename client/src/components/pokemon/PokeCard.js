@@ -1,7 +1,7 @@
 import React from 'react'
 import pokeball from '../../assets/pokeball_icon.png'
 
-function PokeCard({ pokeData,id,setSelectedIndex}) {
+function PokeCard({pokeData,id,setSelectedIndex}) {
 
     return (
         <div className="card" onClick={() => setSelectedIndex(id)}>
