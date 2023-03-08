@@ -33,7 +33,7 @@ function App() {
   //topscreen poke index
   const [selectedIndex, setSelectedIndex] = useState(2)
   //bot screen pokecard indexes
-  const [galleryIndex, setGalleryIndex] = useState([0,1,2,3,4,5],[0])
+  // const [galleryIndex, setGalleryIndex] = useState([0,1,2,3,4,5],[0])
   
 
 
@@ -95,9 +95,9 @@ function App() {
         {pokeData ?
           <BotScreen
             pokeData={pokeData}
-            galleryIndex={[galleryIndex]}
+            // galleryIndex={[galleryIndex]}
             setSelectedIndex={setSelectedIndex}
-            setGalleryIndex={setGalleryIndex}
+            // setGalleryIndex={setGalleryIndex}
           />
           : null}
       </div>
