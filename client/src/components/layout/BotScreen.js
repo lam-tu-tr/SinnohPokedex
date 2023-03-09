@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import PokeCard from "../pokemon/PokeCard.js";
 
 function BotScreen({ pokeData, setSelectedIndex }) {
-  console.log(pokeData)
+
   const [galleryIndex, setGalleryIndex] = useState({
     index: [0, 1, 2, 3, 4, 5],
     page: 0,
@@ -22,22 +22,37 @@ function BotScreen({ pokeData, setSelectedIndex }) {
         // galleryIndex is passed as an object array of array, aka 2D array
         // id gives position of pokeCard 0-5 starting from top left
         id={galleryIndex.index[i]}
-        // selectedIndex={setSelectedIndex}
         setSelectedIndex={setSelectedIndex}
+        numPoke={pokeData.length}
       />
     );
   }
   function changePage(buttonState, { page, numPages }) {
-    console.log(numPages)
-    if (buttonState === "forward" && page < numPages - 2) {
-      setGalleryIndex(prevIndex => {
-        return {
-          ...prevIndex,
-          index: prevIndex.index.map(index => index + 6),
-          page: prevIndex.page + 1
-        }
-      })
-    }
+
+    setGalleryIndex(prevIndex => {
+      return {
+        ...prevIndex,
+        index: prevIndex.index.map(index => {
+          if (buttonState === "forward" && page < numPages - 1) {
+            return index + 6;
+          } else if (buttonState === "backward" && page > 0) {
+            return index - 6;
+          } else {
+            return index;
+          }
+        }),
+        page: (function () {
+          if (buttonState === "forward" && page < numPages - 2) {
+            return prevIndex.page + 1;
+          } else if (buttonState === "backward" && page > 0) {
+            return prevIndex.page - 1;
+          } else {
+            return prevIndex.page;
+          }
+        }())
+      }
+    })
+    // Another way to implement page change
     // else if(buttonState === "backward" && page > 0){
     //   setGalleryIndex(prevIndex => {
     //     return {
