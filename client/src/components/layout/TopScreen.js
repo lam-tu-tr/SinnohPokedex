@@ -1,14 +1,14 @@
 import React from 'react'
 import pokeball from '../../assets/pokeball_icon.png'
 
-function TopScreen({ pokeData,selectedIndex, typeColorObj }) {
+function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
 
-    const {name,img_hd,types,height,weight,index} = pokeData[selectedIndex]
+    const { name, img_hd, types, height, weight, index } = pokeData[selectedIndex]
 
-    function Capitalize (string) {
+    function Capitalize(string) {
         return string.charAt(0).toUpperCase() + string.slice(1)
     }
-    
+
     return (
         <div id="top_screen">
 
@@ -26,36 +26,41 @@ function TopScreen({ pokeData,selectedIndex, typeColorObj }) {
             </header>
 
             <div id="sprite">
-                <img src={img_hd} alt="Sprite"></img>
+                <img src={img_hd} alt="Sprite" style={{ filter: `drop-shadow(4px 2px 1px rgba(0, 0, 0, 0.5)  )` }}></img>
             </div>
 
             <section id="info-section">
 
                 <div>TYPE
                     <span
-                        style={{backgroundColor: `rgb(${typeColorObj[types[0].type.name]})`}}
+                        style={{ backgroundColor: `rgb(${typeColorObj[types[0].type.name]})` }}
                         className="type"
                     >
                         {Capitalize(types[0].type.name)}
                     </span>
-                    
+
                     {/* if second type exists, only then display it */}
-                    {types.length > 1 ? 
+                    {types.length > 1 ?
                         <span
-                            style={{backgroundColor: `rgb(${typeColorObj[types[1].type.name]})`}}
+                            style={{ backgroundColor: `rgb(${typeColorObj[types[1].type.name]})` }}
                             className="type"
                         >
-                            {Capitalize(types[1].type.name)}    
+                            {Capitalize(types[1].type.name)}
                         </span>
                         : null
                     }
                 </div>
-                
+
+                <hr></hr>
+
                 <div>
                     <span>HEIGHT</span>
                     {/* add logic for height calc */}
                     <span>{height * 10} cm</span>
                 </div>
+
+                <hr></hr>
+                
                 <div>
                     <span>WEIGHT</span>
                     <span>{weight * 100 / 1000} kg</span>
@@ -69,7 +74,7 @@ function TopScreen({ pokeData,selectedIndex, typeColorObj }) {
             </section>
 
             <div id="stat">
-                
+
                 <span>
                     <img src={pokeball} alt="pokeball" className='pokeball'></img>
                     <b> Obtained</b>

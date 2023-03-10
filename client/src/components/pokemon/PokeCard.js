@@ -3,12 +3,21 @@ import pokeball from '../../assets/pokeball_icon.png'
 
 function PokeCard({ pokeData, id, setSelectedIndex, numPoke }) {
 
+    const style = {
+        visibility: (id === numPoke ? 'hidden': {}),
+        animationName: 'pokeballHover'
+    }
     return (
-        <div className="card" onClick={() => setSelectedIndex(id)} style={id === numPoke ? {visibility: 'hidden'}: {} }>
-            { id < numPoke && <img src={pokeData.sprite} alt="PokeSprite" />}
-            { id < numPoke &&
+        <div 
+            className="card .pokeballHover" 
+            onClick={() => setSelectedIndex(id)} 
+            
+            style={style}
+        >
+            {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite" />}
+            {id < numPoke &&
                 <div>
-                    <img src={pokeball} alt="pokeball" className='pokeball'/>
+                    <img src={pokeball} alt="pokeball" className='pokeball' />
                     <article>{pokeData.index}</article>
                 </div>
             }
