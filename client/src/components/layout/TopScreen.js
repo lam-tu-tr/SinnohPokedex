@@ -1,5 +1,7 @@
 import React from 'react'
 import pokeball from '../../assets/pokeball_icon.png'
+import { motion as m } from 'framer-motion'
+
 
 function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
 
@@ -10,7 +12,7 @@ function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
     }
 
     return (
-        <div id="top_screen">
+        <div id="top_screen" >
 
             <div id="colorRed">
                 <div></div>
@@ -25,11 +27,14 @@ function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
                 </div>
             </header>
 
-            <div id="sprite">
+            <m.div
+                id="sprite"
+                whileHover={{ scale: 1.1 }}
+            >
                 <img src={img_hd} alt="Sprite" style={{ filter: `drop-shadow(4px 2px 1px rgba(0, 0, 0, 0.5)  )` }}></img>
-            </div>
+            </m.div>
 
-            <section id="info-section">
+            <section id="info-section" >
 
                 <div>TYPE
                     <span
@@ -60,7 +65,7 @@ function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
                 </div>
 
                 <hr></hr>
-                
+
                 <div>
                     <span>WEIGHT</span>
                     <span>{weight * 100 / 1000} kg</span>
@@ -87,6 +92,7 @@ function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
                 <div><b>No.</b> </div>
                 <div><b>{index}</b></div>
             </article>
+
         </div>
     )
 }

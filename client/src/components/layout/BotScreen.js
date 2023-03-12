@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PokeCard from "../pokemon/PokeCard.js";
 
-function BotScreen({ pokeData, setSelectedIndex }) {
+function BotScreen({ pokeData, setSelectedIndex,obtainedStatus,setObtainedStatus }) {
 
     const [galleryIndex, setGalleryIndex] = useState({
         index: [0, 1, 2, 3, 4, 5],
@@ -9,8 +9,6 @@ function BotScreen({ pokeData, setSelectedIndex }) {
         numPages: Math.floor(pokeData.length / 6)
     })
 
-    // // console.log(galleryIndex.currentPage)
-    // console.log(pokeData[galleryIndex.currentIndex[0]])
 
     let pokeCards = [];
     for (let i = 0; i < 6; i++) {
@@ -24,6 +22,8 @@ function BotScreen({ pokeData, setSelectedIndex }) {
                 id={galleryIndex.index[i]}
                 setSelectedIndex={setSelectedIndex}
                 numPoke={pokeData.length}
+                obtainedStatus={obtainedStatus}
+                setObtainedStatus={setObtainedStatus}
             />
         );
     }

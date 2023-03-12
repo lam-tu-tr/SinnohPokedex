@@ -35,6 +35,8 @@ function App() {
     //bot screen pokecard indexes
     // const [galleryIndex, setGalleryIndex] = useState([0,1,2,3,4,5],[0])
 
+    const [obtainedStatus, setObtainedStatus] = useState(true)
+
     useEffect(() => {
         //"API" call from file WITHOUT backend
         console.log("fetching data api from json file");
@@ -89,9 +91,9 @@ function App() {
                 {pokeData ? (
                     <BotScreen
                         pokeData={pokeData}
-                        // galleryIndex={[galleryIndex]}
                         setSelectedIndex={setSelectedIndex}
-                    // setGalleryIndex={setGalleryIndex}
+                        obtainedStatus={obtainedStatus}
+                        setObtainedStatus={setObtainedStatus}
                     />
                 ) : null}
             </div>
