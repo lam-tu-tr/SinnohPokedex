@@ -39,36 +39,37 @@ function App() {
 
     useEffect(() => {
         //"API" call from file WITHOUT backend
-        console.log("fetching data api from json file");
-        async function fetchData() {
-            const res = await fetch("./api.json"); //from public????
-            const data = await res.json();
-            setPokeData(data);
-        }
-        fetchData();
+        // console.log("fetching data api from json file");
+        // async function fetchData() {
+        //     const res = await fetch("./api.json"); //from public????
+        //     const data = await res.json();
+        //     setPokeData(data);
+        // }
+        // fetchData();
 
         //API call from BACKEND
 
-        // try {
-        //   async function fetchData() {
-        //     console.log("fetching data backend api")
-        //     const res = await fetch("/api")
-        //     const data = await res.json()
-        //     // return data
-        //     // .then(res => res.json())
-        //     // .then(
-        //     //   data => {
-        //     //     console.log('data received from backend')
-        //     //     console.log(data)
-        //     //     setPokeData(data)
-        //     // })
-        //     setPokeData(data)
-        //   }
-        //   fetchData()
+        try {
+            async function fetchData() {
+            console.log("fetching data backend api")
+            const res = await fetch("/api")
+            const data = await res.json()
+            // return data
+            // .then(res => res.json())
+            // .then(
+            //   data => {
+            //     console.log('data received from backend')
+            //     console.log(data)
+            //     setPokeData(data)
+            // })
 
-        // } catch (err) {
-        //   console.log(err)
-        // }
+            setPokeData(data)
+            }
+            fetchData()
+
+        } catch (err) {
+            console.log(err)
+        }
     }, []);
 
     //This useEffect handles topscreen sprite change when gallery clicked

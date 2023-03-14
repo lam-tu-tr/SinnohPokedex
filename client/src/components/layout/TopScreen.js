@@ -14,6 +14,7 @@ function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
     return (
         <div id="top_screen" >
 
+
             <div id="colorRed">
                 <div></div>
             </div>

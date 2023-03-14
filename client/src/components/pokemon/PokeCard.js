@@ -4,7 +4,6 @@ import { motion as m } from 'framer-motion'
 
 function PokeCard({ pokeData, id, setSelectedIndex, numPoke, obtainedStatus,setObtainedStatus }) {
 
-
     const style = {
         visibility: (id === numPoke ? 'hidden' : {}),
         animationName: 'pokeballHover'
@@ -22,7 +21,7 @@ function PokeCard({ pokeData, id, setSelectedIndex, numPoke, obtainedStatus,setO
             dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
             dragPropagation
         >
-            {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite" />}
+            {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite"/>}
             {id < numPoke &&
                 <div >
                     <div 

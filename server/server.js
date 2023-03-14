@@ -8,7 +8,7 @@ app.set('view engine', 'ejs')
 const path = require('path')
 app.set('views', path.join(__dirname, '/views'))
 
-const MongoClient = require('mongodb').MongoClient
+// const MongoClient = require('mongodb').MongoClient
 const PORT = 8000
 
 require('dotenv').config()                                       
@@ -17,8 +17,8 @@ app.use(express.json())
 
 let api_url = 'https://pokeapi.co/api/v2/pokemon/?offset=386&limit=107'
 
-let db,
-    dbConnectionStr = process.env.DB_STRING                         //application interface to get user environment usng env
+// let db,
+//     dbConnectionStr = process.env.DB_STRING                         //application interface to get user environment usng env
 
 
 const getPokeAPI = async () => {
@@ -53,17 +53,16 @@ const getPokeAPI = async () => {
         return extracted_poke_Data
 
     }catch(err) {
-
         console.log(err)                                                           //throw error so that .then from getPokeAPI.then can handle error
     }
 }
 
 
 
-MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true}, (err, client) => {
-    if (err) return console.error(err)
-    console.log('connected to database')
-})
+// MongoClient.connect(dbConnectionStr, {useUnifiedTopology: true}, (err, client) => {
+//     if (err) return console.error(err)
+//     console.log('connected to database')
+// })
 
 
 app.get('/api', async function (req, res) {
