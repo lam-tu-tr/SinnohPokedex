@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PokeCard from "../pokemon/PokeCard.js";
 
-function BotScreen({ pokeData, setSelectedIndex,obtainedStatus,setObtainedStatus }) {
+function BotScreen({ pokeData, setSelectedIndex, obtainedStatus, setObtainedStatus }) {
 
     const [galleryIndex, setGalleryIndex] = useState({
         index: [0, 1, 2, 3, 4, 5],
@@ -10,23 +10,27 @@ function BotScreen({ pokeData, setSelectedIndex,obtainedStatus,setObtainedStatus
     })
 
 
-    let pokeCards = [];
-    for (let i = 0; i < 6; i++) {
-        pokeCards.push(
-            <PokeCard
-                pokeData={pokeData[galleryIndex.index[i]]}
-                //create a random key using uuid each comp declaration
-                key={crypto.randomUUID()}
-                // galleryIndex is passed as an object array of array, aka 2D array
-                // id gives position of pokeCard 0-5 starting from top left
-                id={galleryIndex.index[i]}
-                setSelectedIndex={setSelectedIndex}
-                numPoke={pokeData.length}
-                obtainedStatus={obtainedStatus}
-                setObtainedStatus={setObtainedStatus}
-            />
-        );
-    }
+
+    const pokeCards = pokeData.map((items, i) => {
+        console.log(items)
+        if (i >= 6) return
+
+        return <PokeCard
+            pokeData={pokeData[galleryIndex.index[i]]}
+            //create a random key using uuid each comp declaration
+            key={crypto.randomUUID()}
+            // galleryIndex is passed as an object array of array, aka 2D array
+            // id gives position of pokeCard 0-5 starting from top left
+            id={galleryIndex.index[i]}
+            setSelectedIndex={setSelectedIndex}
+            numPoke={pokeData.length}
+            obtainedStatus={obtainedStatus}
+            setObtainedStatus={setObtainedStatus}
+        />
+
+    })
+
+
     function changePage(buttonState, { page, numPages }) {
         setGalleryIndex(prevIndex => {
             return {
@@ -62,8 +66,9 @@ function BotScreen({ pokeData, setSelectedIndex,obtainedStatus,setObtainedStatus
         //   })
         // }
     }
+
     return (
-        <div id="bot_screen">
+        <div id="bot_screen">pokeCards
             <div id="gallery">
                 {pokeCards}
                 {/* Note: cannot use for loop inside here */}
