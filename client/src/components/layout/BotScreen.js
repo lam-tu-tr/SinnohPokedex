@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import PokeCard from "../pokemon/PokeCard.js";
+import { AppContext } from '../../AppContext.js'
 
-function BotScreen({ pokeData, setSelectedIndex, obtainedStatus, setObtainedStatus }) {
+function BotScreen() {
 
+    const { pokeData, setSelectedIndex } = useContext(AppContext)
     const [galleryIndex, setGalleryIndex] = useState({
         index: [0, 1, 2, 3, 4, 5],
         page: 0,
@@ -11,8 +13,8 @@ function BotScreen({ pokeData, setSelectedIndex, obtainedStatus, setObtainedStat
 
 
 
-    const pokeCards = pokeData.map((items, i) => {
-        console.log(items)
+    const pokeCards = (pokeData || []).map((items, i) => {
+        // console.log(items)
         if (i >= 6) return
 
         return <PokeCard
@@ -24,8 +26,6 @@ function BotScreen({ pokeData, setSelectedIndex, obtainedStatus, setObtainedStat
             id={galleryIndex.index[i]}
             setSelectedIndex={setSelectedIndex}
             numPoke={pokeData.length}
-            obtainedStatus={obtainedStatus}
-            setObtainedStatus={setObtainedStatus}
         />
 
     })

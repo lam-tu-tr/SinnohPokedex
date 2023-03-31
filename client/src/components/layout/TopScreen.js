@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import pokeball from '../../assets/pokeball_icon.png'
 import { motion as m } from 'framer-motion'
 
+import { AppContext } from '../../AppContext.js'
 
-function TopScreen({ pokeData, selectedIndex, typeColorObj }) {
+function TopScreen() {
+
+    const { pokeData, selectedIndex, typeColorObj } = useContext(AppContext)
 
     const { name, img_hd, types, height, weight, index } = pokeData[selectedIndex]
 

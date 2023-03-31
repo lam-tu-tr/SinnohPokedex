@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import pokeball from '../../assets/pokeball_icon.png'
 import { motion as m } from 'framer-motion'
+import { AppContext } from '../../AppContext'
 
-function PokeCard({ pokeData, id, setSelectedIndex, numPoke, obtainedStatus,setObtainedStatus }) {
+function PokeCard({ pokeData, id, setSelectedIndex, numPoke }) {
+
+    const { obtainedStatus, setObtainedStatus } = useContext(AppContext)
 
     const style = {
         visibility: (id === numPoke ? 'hidden' : {}),
@@ -11,9 +14,9 @@ function PokeCard({ pokeData, id, setSelectedIndex, numPoke, obtainedStatus,setO
     return (
         <m.div
             className="card"
-            onClick={() => setSelectedIndex(id)}
+            onClick={() => setSelectedIndex(() => id)}
             style={style}
-            whileHover={{ 
+            whileHover={{
                 scale: 1.1,
             }}
             drag
@@ -21,18 +24,18 @@ function PokeCard({ pokeData, id, setSelectedIndex, numPoke, obtainedStatus,setO
             dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
             dragPropagation
         >
-            {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite"/>}
+            {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite" />}
             {id < numPoke &&
                 <div >
-                    <div 
-                        
+                    <div
+
                         onClick={() => setObtainedStatus(prevStatus => {
                             console.log(prevStatus)
                             return !prevStatus
                         })}
-                    >   
+                    >
                         {
-                            obtainedStatus === true ? 
+                            obtainedStatus === true ?
                                 <m.img
                                     src={pokeball}
                                     alt="pokeball"
@@ -45,21 +48,21 @@ function PokeCard({ pokeData, id, setSelectedIndex, numPoke, obtainedStatus,setO
                                             repeat: Infinity
                                         }
                                     }}
-                                    whileTap={{ 
+                                    whileTap={{
                                         translateY: 5,
                                     }}
-                                /> 
-                                : 
+                                />
+                                :
                                 <div
                                     style={{
-                                        height: '20px', 
+                                        height: '20px',
                                         width: '20px',
                                         backgroundColor: 'gray',
                                         borderRadius: '20px'
                                     }}
                                 ></div>
                         }
-                        
+
                     </div>
                     <article>{pokeData.index}</article>
                 </div>
