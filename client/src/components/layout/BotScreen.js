@@ -68,7 +68,7 @@ function BotScreen() {
     }
 
     return (
-        <div id="bot_screen">pokeCards
+        <div id="bot_screen">
             <div id="gallery">
                 {pokeCards}
                 {/* Note: cannot use for loop inside here */}
