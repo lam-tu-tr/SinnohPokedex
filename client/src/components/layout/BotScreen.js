@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import PokeCard from "../pokemon/PokeCard.js";
-import { AppContext } from "../../AppContext.js";
 
 function BotScreen({
   pokeData,
