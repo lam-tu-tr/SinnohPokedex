@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import TopScreen from "./components/layout/TopScreen.js";
 import BotScreen from "./components/layout/BotScreen.js";
-import Nav from "./components/layout/Nav.js";
 
 import Pokedex from "./assets/Pokedex_1200x900.png";
 
@@ -32,27 +31,17 @@ function App() {
   const [pokeData, setPokeData] = useState(null);
   //topscreen poke index
   const [selectedIndex, setSelectedIndex] = useState(2);
-  //bot screen pokecard indexes
-  // const [galleryIndex, setGalleryIndex] = useState([0,1,2,3,4,5],[0])
 
   const [obtainedStatus, setObtainedStatus] = useState(true);
 
   useEffect(() => {
     //API call from BACKEND
-
     try {
       async function fetchData() {
         console.log("fetching data backend api");
         const res = await fetch("/api");
         const data = await res.json();
-        // return data
-        // .then(res => res.json())
-        // .then(
-        //   data => {
-        //     console.log('data received from backend')
-        //     console.log(data)
-        //     setPokeData(data)
-        // })
+
         setPokeData(data);
       }
       fetchData();
@@ -61,13 +50,8 @@ function App() {
     }
   }, []);
 
-  //This useEffect handles topscreen sprite change when gallery clicked
-  useEffect(() => {}, [selectedIndex]);
-  //This useEffect handles logic for updating gallery
-  useEffect(() => {});
   return (
     <div id="Container">
-      <Nav />
       <div id="Pokedex">
         <img src={Pokedex} alt="pokedex png"></img>
         {pokeData ? (

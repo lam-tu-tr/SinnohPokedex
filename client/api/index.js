@@ -1,13 +1,10 @@
 const express = require("express");
 const app = express();
 
-//EJS
-const ejs = require("ejs");
 app.set("view engine", "ejs");
 const path = require("path");
 app.set("views", path.join(__dirname, "/views"));
 
-// const MongoClient = require('mongodb').MongoClient
 const PORT = 8000;
 
 require("dotenv").config();
@@ -89,6 +86,8 @@ app.get("/api", async function (req, res) {
   res.json(Pokemon_data);
 });
 
+//* process.env.PORT is a automatic PORT checker convention that deployment websites use
+//* so that the app can accept.
 app.listen(process.env.PORT || PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
