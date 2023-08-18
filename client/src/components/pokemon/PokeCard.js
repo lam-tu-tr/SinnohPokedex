@@ -27,7 +27,7 @@ function PokeCard({
       dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
       dragPropagation
     >
-      {id < numPoke && <img src={pokeData.sprite} alt="Sprite" />}
+      {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite" />}
       {id < numPoke && (
         <div>
           <div

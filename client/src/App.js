@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import "./App.css";
 import TopScreen from "./components/layout/TopScreen.js";
 import BotScreen from "./components/layout/BotScreen.js";
 import Nav from "./components/layout/Nav.js";
 
 import Pokedex from "./assets/Pokedex_1200x900.png";
+import AppContextWrapper, { AppContext } from "./AppContext";
 
 const typeColorObj = {
   rock: [182, 158, 49],
@@ -99,5 +100,18 @@ function App() {
     </div>
   );
 }
+
+const InnerApp = () => {
+  const { pokeData } = useContext(AppContext);
+
+  return (
+    pokeData && (
+      <>
+        <TopScreen />
+        <BotScreen />
+      </>
+    )
+  );
+};
 
 export default App;
