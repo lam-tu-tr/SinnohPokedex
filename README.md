@@ -1,6 +1,6 @@
 # Sinnoh Pokedex
 
-### Figma, HTML, CSS, Javascript, React, Framer Motion
+### Figma, HTML, CSS, Javascript, Express, React, Framer Motion
 
 > This is my second project, a Pokedex Web app that includes Pokemon from the Sinnoh regions only
 
