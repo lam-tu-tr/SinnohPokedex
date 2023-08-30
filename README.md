@@ -7,15 +7,15 @@ a Pokémon Encyclopedia web app based on the Sinnoh Region Pokédex
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, Express, Framer Motion, Figma
+**Tech used:** HTML, CSS, JavaScript, React, Express, Framer Motion, Figma
 
-I first designed the Pokedex UI in Figma
+I first designed the Pokedex UI in Figma then translated the design to code using Css. I utilized Flexbox and Grid to position the components and React to change the states of these components dependent on user input. Since I wanted experience working with the backend, I separated the project into client and server components. Here, Express creates the server that operates at a local port that I use to retrieve, process, and serve the Pokemon data to the client. Finally, I added animations using Framer Motion to tie everything together and give the project a more life like experience.
 
 ## Lessons Learned:
-I learned how to manipulate DOM elements using JS, fetch from an API, and use AddEventListeners to listen for user inputs. I really enjoyed working on this project while figuring out the intricacies of working with the basics of basics. Looking back, I had finished this project without knowing the existence of React or any other frontend frameworks. Because of this, I learned to appreciate React and how it helps developers speed up code and optimize for performance without the nitty gritty verbose details.
+
 
 ## Examples:
-Take a look at these couple examples that I have in my own portfolio:
+
 
 **Ai-Itinerary-Planner:** https://github.com/lam-tu-tr/PlanMyTrip
 
