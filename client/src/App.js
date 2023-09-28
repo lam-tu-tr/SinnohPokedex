@@ -3,7 +3,7 @@ import "./App.css";
 import TopScreen from "./components/layout/TopScreen.js";
 import BotScreen from "./components/layout/BotScreen.js";
 
-import Pokedex from "./assets/Pokedex_1200x900.png";
+import Pokedex from "./assets/Pokedex_1274x900.png";
 
 const typeColorObj = {
   rock: [182, 158, 49],
@@ -51,9 +51,10 @@ function App() {
   }, []);
 
   return (
-    <div id="Container">
+    <div id="Container" className="background">
       <div id="Pokedex">
         <img src={Pokedex} alt="pokedex png"></img>
+
         {pokeData ? (
           <TopScreen
             pokeData={pokeData}
