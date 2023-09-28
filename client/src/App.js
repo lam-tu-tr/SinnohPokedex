@@ -51,28 +51,30 @@ function App() {
   }, []);
 
   return (
-    <div id="Container" className="background">
+    <main id="Container" className="background">
       <div id="Pokedex">
         <img src={Pokedex} alt="pokedex png"></img>
 
-        {pokeData ? (
-          <TopScreen
-            pokeData={pokeData}
-            selectedIndex={selectedIndex}
-            typeColorObj={typeColorObj}
-          />
-        ) : null}
-
-        {pokeData ? (
-          <BotScreen
-            pokeData={pokeData}
-            setSelectedIndex={setSelectedIndex}
-            obtainedStatus={obtainedStatus}
-            setObtainedStatus={setObtainedStatus}
-          />
-        ) : null}
+        <section id="screen">
+          {pokeData ? (
+            <TopScreen
+              pokeData={pokeData}
+              selectedIndex={selectedIndex}
+              typeColorObj={typeColorObj}
+            />
+          ) : null}
+          <aside></aside>
+          {pokeData ? (
+            <BotScreen
+              pokeData={pokeData}
+              setSelectedIndex={setSelectedIndex}
+              obtainedStatus={obtainedStatus}
+              setObtainedStatus={setObtainedStatus}
+            />
+          ) : null}
+        </section>
       </div>
-    </div>
+    </main>
   );
 }
 

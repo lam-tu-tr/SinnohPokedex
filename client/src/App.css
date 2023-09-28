@@ -20,12 +20,12 @@
   justify-content: center;
   align-content: center;
   align-items: center;
+
+  opacity: 0.8;
 }
 
 .background {
   /* main background */
-  background-color: #e5e5f7;
-  opacity: 0.8;
   background-image: linear-gradient(
       30deg,
       #a2beff 12%,
@@ -84,11 +84,19 @@
 }
 
 /* ------------------------------Media Queries-------------------------------*/
-@media (max-width: 650px) {
-  #Pokedex {
+@media (max-width: 550px) {
+  #screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100svh;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+  }
+  #screen aside {
+    height: 100%;
   }
 }
