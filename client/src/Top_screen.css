@@ -3,12 +3,15 @@
 #top_screen {
   z-index: 10;
   box-sizing: border-box;
-  max-width: 361px !important;
-  height: 333px !important;
-  left: 445px;
-  top: 49px;
+
+  left: calc((445 / 1274) * 100%);
+  top: calc((49 / 899) * 100%);
+
+  width: calc((361 / 1274) * 100%);
+  height: calc((333 / 899) * 100%);
+
   position: absolute;
-  border: 20px solid #000000;
+  border: 10px solid #000000;
   border-radius: 10px;
 
   background-blend-mode: hard-light;

@@ -2,17 +2,20 @@
 #bot_screen {
   z-index: 10;
   box-sizing: border-box;
-  max-width: 361px !important;
-  height: 332px !important;
-  left: 445px;
-  top: 506px;
+
+  left: calc((445 / 1274) * 100%);
+  top: calc((506 / 899) * 100%);
+
+  width: calc((361 / 1274) * 100%);
+  height: calc((333 / 899) * 100%);
+
   position: absolute;
 
   display: grid;
   grid-template-columns: repeat(25, 1fr);
   grid-template-rows: repeat(24, 1fr);
 
-  border: 20px solid #000000;
+  border: 10px solid #000000;
   /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), inset 7px 7px 4px 17px rgba(0, 0, 0, 0.25); */
   border-radius: 10px;
 

@@ -81,6 +81,13 @@
   background-size: initial;
   object-fit: initial;
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+#Pokedex > img {
+  width: 100%;
+  max-height: 100vh;
+  border: 1px solid black;
 }
 
 /* ------------------------------Media Queries-------------------------------*/
