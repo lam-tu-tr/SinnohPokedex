@@ -93,3 +93,10 @@
   width: 20%;
   z-index: 100;
 }
+
+@media (max-width: 700px) {
+  #loading_pokeball img {
+    width: 50%;
+    z-index: 100;
+  }
+}
