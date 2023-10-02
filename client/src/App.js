@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+
 import "./App.css";
+
 import TopScreen from "./components/layout/TopScreen.js";
 import BotScreen from "./components/layout/BotScreen.js";
+
+import { motion as m, AnimatePresence } from "framer-motion";
+
+import pokeball from "./assets/pokeball.svg";
 
 const typeColorObj = {
   rock: [182, 158, 49],
@@ -57,6 +63,25 @@ function App() {
           typeColorObj={typeColorObj}
         />
       ) : null}
+      <AnimatePresence>
+        {!pokeData ? (
+          <div id="loading_pokeball">
+            <m.img
+              src={pokeball}
+              alt="card_pokeball"
+              animate={{
+                translateX: [0, -50, 50, 0, 0],
+                rotate: [0, -30, 30, 0, 0],
+                transition: {
+                  duration: 1.5,
+                  repeat: Infinity,
+                },
+              }}
+              exit={{ opacity: 0, scale: 2 }}
+            />
+          </div>
+        ) : null}
+      </AnimatePresence>
 
       {pokeData ? (
         <BotScreen
