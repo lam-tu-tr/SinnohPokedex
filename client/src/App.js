@@ -3,8 +3,6 @@ import "./App.css";
 import TopScreen from "./components/layout/TopScreen.js";
 import BotScreen from "./components/layout/BotScreen.js";
 
-import Pokedex from "./assets/Pokedex_1274x900.png";
-
 const typeColorObj = {
   rock: [182, 158, 49],
   ghost: [112, 85, 155],
@@ -52,28 +50,22 @@ function App() {
 
   return (
     <main id="Container" className="background">
-      <div id="Pokedex">
-        <img src={Pokedex} alt="pokedex png"></img>
+      {pokeData ? (
+        <TopScreen
+          pokeData={pokeData}
+          selectedIndex={selectedIndex}
+          typeColorObj={typeColorObj}
+        />
+      ) : null}
 
-        <section id="screen">
-          {pokeData ? (
-            <TopScreen
-              pokeData={pokeData}
-              selectedIndex={selectedIndex}
-              typeColorObj={typeColorObj}
-            />
-          ) : null}
-          <aside></aside>
-          {pokeData ? (
-            <BotScreen
-              pokeData={pokeData}
-              setSelectedIndex={setSelectedIndex}
-              obtainedStatus={obtainedStatus}
-              setObtainedStatus={setObtainedStatus}
-            />
-          ) : null}
-        </section>
-      </div>
+      {pokeData ? (
+        <BotScreen
+          pokeData={pokeData}
+          setSelectedIndex={setSelectedIndex}
+          obtainedStatus={obtainedStatus}
+          setObtainedStatus={setObtainedStatus}
+        />
+      ) : null}
     </main>
   );
 }

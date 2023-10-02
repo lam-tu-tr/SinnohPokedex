@@ -20,16 +20,18 @@ function PokeCard({
       onClick={() => setSelectedIndex(id)}
       style={style}
       whileHover={{
-        scale: 1.1,
+        translateY: -5,
       }}
       drag
       dragSnapToOrigin={true}
       dragTransition={{ bounceStiffness: 300, bounceDamping: 15 }}
       dragPropagation
     >
-      {id < numPoke && <img src={pokeData.sprite} alt="PokeSprite" />}
       {id < numPoke && (
-        <div>
+        <img className="card_sprite" src={pokeData.sprite} alt="PokeSprite" />
+      )}
+      {id < numPoke && (
+        <div className="card_info">
           <div
             onClick={() =>
               setObtainedStatus((prevStatus) => {
@@ -41,8 +43,8 @@ function PokeCard({
             {obtainedStatus === true ? (
               <m.img
                 src={pokeball}
-                alt="pokeball"
-                className="pokeball"
+                alt="card_pokeball"
+                className="card_pokeball"
                 whileHover={{
                   translateX: [0, -1, 1, 0],
                   rotate: [0, -30, 30, 0],
@@ -57,9 +59,8 @@ function PokeCard({
               />
             ) : (
               <div
+                className="card_pokeball"
                 style={{
-                  height: "20px",
-                  width: "20px",
                   backgroundColor: "gray",
                   borderRadius: "20px",
                 }}
