@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PokeCard from "../pokemon/PokeCard.js";
+import { motion as m } from "framer-motion";
 
 function BotScreen({
   pokeData,
@@ -67,25 +68,31 @@ function BotScreen({
   }
   return (
     <div id="bot_screen">
-      <div id="gallery">
-        {pokeCards}
-        {/* Note: cannot use for loop inside here */}
-      </div>
+      <m.div
+        whileTap={{
+          translateY: 5,
+        }}
+        className="button_wrapper"
+      >
+        <aside
+          id="back_button"
+          onClick={() => changePage("backward", galleryIndex)}
+        ></aside>
+      </m.div>
 
-      <div id="bg_color">
-        <div></div>
-      </div>
+      <div id="gallery">{pokeCards}</div>
 
-      <button
-        id="back_button"
-        onClick={() => changePage("backward", galleryIndex)}
-      ></button>
-      <button
-        id="forward_button"
-        onClick={() => changePage("forward", galleryIndex)}
-      ></button>
-
-      <nav id="scroll"></nav>
+      <m.div
+        whileTap={{
+          translateY: 5,
+        }}
+        className="button_wrapper"
+      >
+        <aside
+          id="forward_button"
+          onClick={() => changePage("forward", galleryIndex)}
+        ></aside>
+      </m.div>
     </div>
   );
 }
