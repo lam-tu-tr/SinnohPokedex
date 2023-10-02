@@ -72,13 +72,9 @@ function BotScreen({
         whileTap={{
           translateY: 5,
         }}
-        className="button_wrapper"
-      >
-        <aside
-          id="back_button"
-          onClick={() => changePage("backward", galleryIndex)}
-        ></aside>
-      </m.div>
+        id="back_button"
+        onClick={() => changePage("backward", galleryIndex)}
+      ></m.div>
 
       <div id="gallery">{pokeCards}</div>
 
@@ -86,13 +82,9 @@ function BotScreen({
         whileTap={{
           translateY: 5,
         }}
-        className="button_wrapper"
-      >
-        <aside
-          id="forward_button"
-          onClick={() => changePage("forward", galleryIndex)}
-        ></aside>
-      </m.div>
+        id="forward_button"
+        onClick={() => changePage("forward", galleryIndex)}
+      ></m.div>
     </div>
   );
 }

@@ -20,14 +20,10 @@
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: 1fr;
   align-items: center;
+
+  padding: 1rem;
 }
 
-/* .button_wrapper {
-  flex-basis: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 #back_button {
   cursor: pointer;
   height: 2rem;
@@ -52,12 +48,11 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr 1fr;
     gap: 0.5rem;
+    margin-bottom: 10%;
   }
 }
 
 @media (max-width: 450px) {
-  .button_wrapper {
-  }
   #back_button {
     position: absolute;
     bottom: 0;
